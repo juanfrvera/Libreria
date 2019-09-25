@@ -3,9 +3,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title id="tato">
-      Materiales
-    </ion-title>
+    <ion-searchbar placeholder="Buscar">
+
+    </ion-searchbar>
     <ion-button slot="end" href="/carrito">
       <ion-icon name="cart"></ion-icon>
     </ion-button>
@@ -13,15 +13,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <!--<ion-icon [name]="item.icon" slot="start"></ion-icon>-->
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row class="gridHeader">
+      <ion-col>Título</ion-col>
+      <ion-col>Autor</ion-col>
+      <ion-col>Precio</ion-col>
+      <ion-col>Stock</ion-col>
+      <ion-col>Carrito</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of items">
+      <ion-col>{{item.title}}</ion-col>
+      <ion-col>{{item.autor}}</ion-col>
+      <ion-col>{{item.precio}}</ion-col>
+      <ion-col>{{item.stock}}</ion-col>
+      <ion-col>
+        <ion-button href="/carrito">
+          <ion-icon name="cart"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
