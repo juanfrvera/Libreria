@@ -27,8 +27,9 @@
       <ion-col>{{item.precio}}</ion-col>
       <ion-col>{{item.stock}}</ion-col>
       <ion-col>
-        <ion-button href="/carrito">
-          <ion-icon name="cart"></ion-icon>
+        <ion-button>
+          <ion-icon name="cart" slot="start"></ion-icon>
+          <ion-label slot="end">{{item.carrito}}</ion-label>
         </ion-button>
       </ion-col>
     </ion-row>
