@@ -2,15 +2,8 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
     "declaration": false,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es5",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -18,7 +11,14 @@
       "es5",
       "es6",
       "dom"
-    ]
+    ],
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./dist/out-tsc",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
