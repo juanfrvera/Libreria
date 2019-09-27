@@ -24,6 +24,8 @@ export class ListPage implements OnInit {
     'build'
   ];
 
+  public carrito : number;
+
   public items: Array<Item> = [];
   private listaCarrito: Array<number> = new Array<number>(20).fill(0);
 
@@ -37,6 +39,7 @@ export class ListPage implements OnInit {
         carrito: this.listaCarrito[i]
       });
     }
+    this.carrito = 0;
   }
 
   async mostrarMaterial() {
@@ -47,7 +50,10 @@ export class ListPage implements OnInit {
   }
 
   clickMaterial(item : Item){
-    alert("click "+item.title);
+  }
+  agregarCarrito(item : Item){
+    item.carrito ++;
+    this.carrito++;
   }
 
   ngOnInit() { }
