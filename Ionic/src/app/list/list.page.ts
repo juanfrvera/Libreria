@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { getConnection } from "typeorm";
-import { Catalog } from '../../entity/Catalog';
 
 @Component({
   selector: 'app-list',
@@ -38,15 +36,6 @@ export class ListPage implements OnInit {
 
 
   ngOnInit() {
-    let catalog = new Catalog();
-    catalog.journal = "Oracle Magazine";
-    catalog.publisher = "Oracle Publishing";
-    catalog.edition = "November December 2013";
-    catalog.title = "Quintessential and Collaborative";
-    catalog.author = "Tom Haunert";
-    catalog.isPublished = true;
-
-    getConnection().manager.save(catalog);
   }
   // add back when alpha.4 is out
   // navigate(item) {
