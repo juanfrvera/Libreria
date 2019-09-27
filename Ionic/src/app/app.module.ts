@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+//import {TypeOrmModule} from '../../node_modules/typeorm/'
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+  ///TypeOrmModule.forRoot({
+
+    //})
   ],
   providers: [
     StatusBar,
