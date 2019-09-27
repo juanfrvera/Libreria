@@ -8,7 +8,7 @@
     </ion-searchbar>
     <ion-button slot="end" href="/carrito">
       <ion-icon name="cart" slot="start"></ion-icon>
-      <ion-label slot="end">{{carrito}}</ion-label>
+      <ion-label slot="end">{{carrito.Cantidad()}}</ion-label>
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -28,12 +28,16 @@
       <ion-col>{{item.precio}}</ion-col>
       <ion-col>{{item.stock}}</ion-col>
       <ion-col>
-        <ion-button (click)="agregarCarrito(item)">
-          <ion-icon name="cart" slot="start"></ion-icon>
-          <ion-label slot="end">{{item.carrito}}</ion-label>
-        </ion-button>
-        <div *ngIf="item.carrito > 0">
-          <ion-button slot="end">
+        <div>
+          <ion-button (click)="agregarCarrito(item)" *ngIf="item.carrito == 0"color="primary">
+            <ion-icon name="cart" slot="start"></ion-icon>
+            <ion-label slot="end">{{item.carrito}}</ion-label>
+          </ion-button>
+          <ion-button (click)="aumentar(item)" *ngIf="item.carrito > 0" color="success">
+              <ion-icon name="cart" slot="start"></ion-icon>
+              <ion-label slot="end">{{item.carrito}}</ion-label>
+            </ion-button>
+          <ion-button slot="end" (click)="reducir(item)" *ngIf="item.carrito > 0" color="danger">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </div>

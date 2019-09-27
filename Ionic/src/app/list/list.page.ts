@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MaterialPage } from './material/material.page';
+import { Carrito } from './../../model/Carrito';
+import { Item } from './../../model/Item';
 
 @Component({
   selector: 'app-list',
@@ -24,10 +26,11 @@ export class ListPage implements OnInit {
     'build'
   ];
 
-  public carrito : number;
-
   public items: Array<Item> = [];
+
+
   private listaCarrito: Array<number> = new Array<number>(20).fill(0);
+
 
   constructor(public modalController: ModalController) {
     for (let i = 1; i < 20; i++) {
@@ -39,8 +42,9 @@ export class ListPage implements OnInit {
         carrito: this.listaCarrito[i]
       });
     }
-    this.carrito = 0;
   }
+
+
 
   async mostrarMaterial() {
     const modal = await this.modalController.create({
@@ -49,15 +53,16 @@ export class ListPage implements OnInit {
     return await modal.present();
   }
 
-  clickMaterial(item : Item){
-  }
-  agregarCarrito(item : Item){
-    item.carrito ++;
-    this.carrito++;
-  }
-
+  clickMaterial(item: Item) { }
   ngOnInit() { }
-}
-class Item{
-  title: string; autor: string; precio: string; stock: number; carrito: number;
+
+  agregarCarrito(item: Item) {
+    Carrito.Agregar(item);
+  }
+  aumentar(item: Item) {
+    Carrito.Agregar(item);
+  }
+  reducir(item: Item) {
+    Carrito.Reducir(item);
+  }
 }
