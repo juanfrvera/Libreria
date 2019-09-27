@@ -21,7 +21,7 @@
       <ion-col>Stock</ion-col>
       <ion-col>Carrito</ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of items">
+    <ion-row *ngFor="let item of items; let i = index" (click)="clickMaterial(item)">
       <ion-col>{{item.title}}</ion-col>
       <ion-col>{{item.autor}}</ion-col>
       <ion-col>{{item.precio}}</ion-col>
@@ -34,9 +34,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>

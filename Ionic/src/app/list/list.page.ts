@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { MaterialPage } from './material/material.page';
 
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
   styleUrls: ['list.page.scss']
 })
+
+
 export class ListPage implements OnInit {
   private selectedItem: any;
   private icons = [
@@ -19,26 +23,35 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
-  public items: Array<{ title: string; autor: string; precio: string; stock: number; carrito: number; }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
+
+  public items: Array<Item> = [];
+  private listaCarrito: Array<number> = new Array<number>(20).fill(0);
+
+  constructor(public modalController: ModalController) {
+    for (let i = 1; i < 20; i++) {
       this.items.push({
         title: 'Libro ' + i,
         autor: 'Sandro',
         precio: '$' + (i * 10),
         stock: i,
         carrito: this.listaCarrito[i]
-        //icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
   }
-  private listaCarrito: Array<number> = new Array<number>(11).fill(0);
 
-
-  ngOnInit() {
+  async mostrarMaterial() {
+    const modal = await this.modalController.create({
+      component: MaterialPage
+    });
+    return await modal.present();
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+
+  clickMaterial(item : Item){
+    alert("click "+item.title);
+  }
+
+  ngOnInit() { }
+}
+class Item{
+  title: string; autor: string; precio: string; stock: number; carrito: number;
 }
