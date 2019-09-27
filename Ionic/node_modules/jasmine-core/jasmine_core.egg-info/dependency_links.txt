@@ -1,1 +1,6 @@
-
+.gridHeader{
+  border-bottom:1px solid #ddd;
+  color: black;
+  font-weight: bold;
+//  background-color:#333;
+}
