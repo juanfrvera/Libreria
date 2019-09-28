@@ -1,3 +1,8 @@
 export class Item {
-  title: string; autor: string; precio: string; stock: number; carrito: number;
+  id : string;
+  title: string;
+  autor: string;
+  precio: string;
+  stock: number;
+  carrito: number;
 }

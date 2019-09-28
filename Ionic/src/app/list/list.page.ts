@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { MaterialPage } from './material/material.page';
-import { Carrito } from './../../model/Carrito';
 import { Item } from './../../model/Item';
+import { VariablesService } from './../../services/Variables';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -32,19 +33,19 @@ export class ListPage implements OnInit {
   private listaCarrito: Array<number> = new Array<number>(20).fill(0);
 
 
-  constructor(public modalController: ModalController) {
+  constructor(private variables: VariablesService, private modalController: ModalController, private router: Router,
+    public alertController: AlertController) {
     for (let i = 1; i < 20; i++) {
       this.items.push({
+        id: i.toString(),
         title: 'Libro ' + i,
         autor: 'Sandro',
         precio: '$' + (i * 10),
         stock: i,
-        carrito: this.listaCarrito[i]
+        carrito: this.variables.carrito.CantidadEnCarrito(i.toString())
       });
     }
   }
-
-
 
   async mostrarMaterial() {
     const modal = await this.modalController.create({
@@ -56,13 +57,39 @@ export class ListPage implements OnInit {
   clickMaterial(item: Item) { }
   ngOnInit() { }
 
+  irACarrito() {
+    if (this.variables.carrito.Cantidad() > 0)
+      this.router.navigate(['/carrito']);
+    else {
+      if(!this.alertaCarrito)
+        this.carritoVacio();
+    }
+  }
+
+  //Pequenio arreglo para que no se generen muchos al apretar enter
+  private alertaCarrito : boolean = false;
+  async carritoVacio(){
+    const alerta = await this.alertController.create({
+      header: 'Nada que vender',
+      message: 'No hay ningún material en el carrito.',
+      buttons: ['OK']
+    });
+
+    this.alertaCarrito = true;
+    await alerta.present();
+    alerta.onDidDismiss().then(x=>this.alertaCarrito=false);
+  }
+
   agregarCarrito(item: Item) {
-    Carrito.Agregar(item);
+    item.carrito++;
+    this.variables.carrito.Agregar(item.id);
   }
   aumentar(item: Item) {
-    Carrito.Agregar(item);
+    item.carrito++;
+    this.variables.carrito.Agregar(item.id);
   }
   reducir(item: Item) {
-    Carrito.Reducir(item);
+    item.carrito--;
+    this.variables.carrito.Reducir(item.id);
   }
 }

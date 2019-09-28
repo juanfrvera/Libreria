@@ -8,7 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Carrito } from './../model/Carrito';
+import {VariablesService} from './../services/Variables';
+import { Carrito } from 'src/model/Carrito';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { Carrito } from './../model/Carrito';
 
 
 export class AppModule {
-  constructor(){
-    Carrito.Initialize();
+  constructor(private variables : VariablesService){
+    if(variables.carrito == null)
+      variables.carrito = new Carrito();
   }
 }

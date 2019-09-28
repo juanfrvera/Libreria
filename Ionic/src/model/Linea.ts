@@ -1,17 +1,13 @@
 import {Item} from './Item'
 export class Linea {
-  private item: Item;
-
-  get Item(): Item {
-    return this.item;
-  }
+  private idItem: string;
 
   private cantidad: number;
   get Cantidad(): number {
     return this.cantidad;
   }
-  constructor(item: Item) {
-    this.item = item;
+  constructor(idItem: string) {
+    this.idItem = idItem;
     this.cantidad = 1;
   }
   Aumentar() {
@@ -19,5 +15,8 @@ export class Linea {
   }
   Reducir() {
     this.cantidad--;
+  }
+  IsId(id : string){
+    return this.idItem == id;
   }
 }

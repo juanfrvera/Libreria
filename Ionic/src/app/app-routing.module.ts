@@ -15,7 +15,11 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
-  { path: 'carrito', loadChildren: './carrito/carrito.module#CarritoPageModule' },  { path: 'material', loadChildren: './list/material/material.module#MaterialPageModule' }
+  {
+    path: 'carrito', 
+    loadChildren: () => import('./carrito/carrito.module').then(m => m.CarritoPageModule)
+  },
+  { path: 'material', loadChildren: './list/material/material.module#MaterialPageModule' }
 
 ];
 
@@ -25,4 +29,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
