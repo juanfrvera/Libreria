@@ -4,6 +4,11 @@
   font-weight: bold;
 //  background-color:#333;
 }
+ion-row:hover{
+  background-color: #f8c3a3;
+  cursor: pointer;
+}
 .gray{
-  color: medium;
+  border-width: 1px 0px 1px 0px;
+  background-color:#e5e5e5;
 }

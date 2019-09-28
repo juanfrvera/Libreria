@@ -1,4 +1,3 @@
-import { Item } from './Item';
 import { Linea } from './Linea';
 
 export class Carrito {

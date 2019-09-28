@@ -18,13 +18,15 @@
     <ion-row class="gridHeader">
       <ion-col>Título</ion-col>
       <ion-col>Autor</ion-col>
+      <ion-col>Proveedor</ion-col>
       <ion-col>Precio</ion-col>
       <ion-col>Stock</ion-col>
       <ion-col>Carrito</ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of items; let i = index">
+    <ion-row *ngFor="let item of items; let i = index" [class.gray]="i%2==1">
       <ion-col (click)="clickMaterial(item)">{{item.titulo}}</ion-col>
       <ion-col (click)="clickMaterial(item)">{{item.autor}}</ion-col>
+      <ion-col (click)="clickMaterial(item)">{{item.proveedor}}</ion-col>
       <ion-col (click)="clickMaterial(item)">{{item.precio}}</ion-col>
       <ion-col (click)="clickMaterial(item)">{{item.stock}}</ion-col>
       <ion-col>

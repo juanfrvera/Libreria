@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
-import { Item } from 'src/model/Item';
+import { Material } from 'src/model/Material';
 
 @Component({
   selector: 'material-page',
@@ -8,7 +8,7 @@ import { Item } from 'src/model/Item';
   styleUrls: ['material.page.scss']
 })
 export class MaterialPage implements OnInit {
-  item : Item;
+  item : Material;
 
   constructor(private modalController: ModalController, private navParams: NavParams) {
 

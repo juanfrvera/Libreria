@@ -1,4 +1,3 @@
-import {Item} from './Item'
 export class Linea {
   private idItem: string;
 
