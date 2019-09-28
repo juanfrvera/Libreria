@@ -29,7 +29,6 @@ export class ListPage implements OnInit {
 
   public items: Array<Item> = [];
 
-
   private listaCarrito: Array<number> = new Array<number>(20).fill(0);
 
 
@@ -38,7 +37,7 @@ export class ListPage implements OnInit {
     for (let i = 1; i < 20; i++) {
       this.items.push({
         id: i.toString(),
-        title: 'Libro ' + i,
+        titulo: 'Libro ' + i,
         autor: 'Sandro',
         precio: '$' + (i * 10),
         stock: i,
@@ -47,28 +46,38 @@ export class ListPage implements OnInit {
     }
   }
 
-  async mostrarMaterial() {
+  async mostrarMaterial(item: Item) {
     const modal = await this.modalController.create({
-      component: MaterialPage
+      component: MaterialPage,
+      componentProps: {
+        "item": item
+      }
     });
+
+    modal.onDidDismiss().then(() => {
+
+    });
+
     return await modal.present();
   }
 
-  clickMaterial(item: Item) { }
+  clickMaterial(item: Item) {
+    this.mostrarMaterial(item);
+  }
   ngOnInit() { }
 
   irACarrito() {
     if (this.variables.carrito.Cantidad() > 0)
       this.router.navigate(['/carrito']);
     else {
-      if(!this.alertaCarrito)
+      if (!this.alertaCarrito)
         this.carritoVacio();
     }
   }
 
   //Pequenio arreglo para que no se generen muchos al apretar enter
-  private alertaCarrito : boolean = false;
-  async carritoVacio(){
+  private alertaCarrito: boolean = false;
+  async carritoVacio() {
     const alerta = await this.alertController.create({
       header: 'Nada que vender',
       message: 'No hay ningún material en el carrito.',
@@ -77,7 +86,7 @@ export class ListPage implements OnInit {
 
     this.alertaCarrito = true;
     await alerta.present();
-    alerta.onDidDismiss().then(x=>this.alertaCarrito=false);
+    alerta.onDidDismiss().then(x => this.alertaCarrito = false);
   }
 
   agregarCarrito(item: Item) {

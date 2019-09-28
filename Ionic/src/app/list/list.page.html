@@ -22,14 +22,14 @@
       <ion-col>Stock</ion-col>
       <ion-col>Carrito</ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of items; let i = index" (click)="clickMaterial(item)">
-      <ion-col>{{item.title}}</ion-col>
-      <ion-col>{{item.autor}}</ion-col>
-      <ion-col>{{item.precio}}</ion-col>
-      <ion-col>{{item.stock}}</ion-col>
+    <ion-row *ngFor="let item of items; let i = index">
+      <ion-col (click)="clickMaterial(item)">{{item.titulo}}</ion-col>
+      <ion-col (click)="clickMaterial(item)">{{item.autor}}</ion-col>
+      <ion-col (click)="clickMaterial(item)">{{item.precio}}</ion-col>
+      <ion-col (click)="clickMaterial(item)">{{item.stock}}</ion-col>
       <ion-col>
         <div>
-          <ion-button (click)="agregarCarrito(item)" *ngIf="item.carrito == 0"color="primary">
+          <ion-button (click)="agregarCarrito(item)" *ngIf="item.carrito == 0" color="primary">
             <ion-icon name="cart" slot="start"></ion-icon>
             <ion-label slot="end">{{item.carrito}}</ion-label>
           </ion-button>

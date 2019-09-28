@@ -1,6 +1,6 @@
 export class Item {
   id : string;
-  title: string;
+  titulo: string;
   autor: string;
   precio: string;
   stock: number;
