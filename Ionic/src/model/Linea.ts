@@ -1,21 +1,22 @@
 export class Linea {
-  private idItem: string;
-
+  private idMaterial: string;
   private cantidad: number;
-  get Cantidad(): number {
-    return this.cantidad;
-  }
+
+  //Propiedades
+  get IdMaterial() : string{return this.idMaterial;}
+  get Cantidad(): number {return this.cantidad;}
+
+  //Constructores
   constructor(idItem: string) {
-    this.idItem = idItem;
+    this.idMaterial = idItem;
     this.cantidad = 1;
   }
+
+  //Métodos
   Aumentar() {
     this.cantidad++;
   }
   Reducir() {
     this.cantidad--;
-  }
-  IsId(id : string){
-    return this.idItem == id;
   }
 }

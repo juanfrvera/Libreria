@@ -32,7 +32,6 @@ import { MaterialPageModule } from './list/material/material.module';
 
 export class AppModule {
   constructor(private variables: VariablesService) {
-    if (variables.carrito == null)
-      variables.carrito = new Carrito();
+    variables.Inicializar();
   }
 }
