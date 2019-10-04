@@ -6,14 +6,22 @@ import { BaseDeDatos } from 'src/model/BaseDedatos';
   providedIn: 'root'
 })
 export class VariablesService {
-  carrito: Carrito;
-  baseDeDatos: BaseDeDatos;
+  private carrito: Carrito;
+  private baseDeDatos: BaseDeDatos;
+
+  get Carrito() : Carrito{
+    return this.carrito;
+  }
+  get BaseDeDatos() : BaseDeDatos{
+    return this.baseDeDatos;
+  }
 
   Inicializar() {
     if (this.carrito == null)
       this.carrito = new Carrito();
 
-    if (this.baseDeDatos == null)
+    if (this.baseDeDatos == null){
       this.baseDeDatos = new BaseDeDatos();
+    }
   }
 }

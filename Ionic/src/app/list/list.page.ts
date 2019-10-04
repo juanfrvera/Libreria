@@ -14,8 +14,10 @@ export class ListPage implements OnInit {
 
   constructor(private variables: VariablesService, private modalController: ModalController, private router: Router,
     public alertController: AlertController) {
-      this.materiales = variables.baseDeDatos.MaterialesDesdeHasta(0, 19);
+    this.materiales = variables.BaseDeDatos.MaterialesDesdeHasta(0, 19);
+    alert(this.materiales[0].Titulo);
   }
+  ngOnInit() { }
 
   async MostrarMaterial(item: Material) {
     const modal = await this.modalController.create({
@@ -30,13 +32,12 @@ export class ListPage implements OnInit {
     return await modal.present();
   }
 
-  clickMaterial(item: Material) {
-    this.MostrarMaterial(item);
+  clickMaterial(material: Material) {
+    this.MostrarMaterial(material);
   }
-  ngOnInit() { }
 
   IrACarrito() {
-    if (this.variables.carrito.Cantidad > 0)
+    if (this.variables.Carrito.Cantidad > 0)
       this.router.navigate(['/carrito']);
     else {
       if (!this.alertaCarrito)
@@ -60,14 +61,14 @@ export class ListPage implements OnInit {
 
   AgregarCarrito(material: Material) {
     material.Carrito++;
-    this.variables.carrito.Aumentar(material.Id);
+    this.variables.Carrito.Aumentar(material.Id);
   }
   Aumentar(material: Material) {
     material.Carrito++;
-    this.variables.carrito.Aumentar(material.Id);
+    this.variables.Carrito.Aumentar(material.Id);
   }
   Reducir(material: Material) {
     material.Carrito--;
-    this.variables.carrito.Reducir(material.Id);
+    this.variables.Carrito.Reducir(material.Id);
   }
 }

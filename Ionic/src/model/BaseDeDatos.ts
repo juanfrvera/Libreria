@@ -31,6 +31,7 @@ export class BaseDeDatos {
   ObtenerMaterial(idMaterial: string): Material {
     return this.materiales.find(m => m.Id == idMaterial);
   }
+  
   MaterialesDesdeHasta(desde : number, hasta : number) : Array<Material>
   {
     return this.materiales.slice(desde, hasta);
