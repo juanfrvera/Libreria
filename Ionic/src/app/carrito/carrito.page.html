@@ -14,23 +14,23 @@
       <ion-col>Stock</ion-col>
       <ion-col>Carrito</ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of items; let i = index" [class.gray]="i%2==1">
-      <ion-col (click)="clickMaterial(item)">{{item.titulo}}</ion-col>
-      <ion-col (click)="clickMaterial(item)">{{item.autor}}</ion-col>
-      <ion-col (click)="clickMaterial(item)">{{item.proveedor}}</ion-col>
-      <ion-col (click)="clickMaterial(item)">{{item.precio}}</ion-col>
-      <ion-col (click)="clickMaterial(item)">{{item.stock}}</ion-col>
+    <ion-row align-items-center *ngFor="let material of materiales; let i = index" [class.gray]="i%2==1" [class.cancelado]="material.Carrito<=0">
+      <ion-col (click)="ClickMaterial(material)">{{material.Titulo}}</ion-col>
+      <ion-col (click)="ClickMaterial(material)">{{material.Autor}}</ion-col>
+      <ion-col (click)="ClickMaterial(material)">{{material.Proveedor}}</ion-col>
+      <ion-col (click)="ClickMaterial(material)">{{material.Precio}}</ion-col>
+      <ion-col (click)="ClickMaterial(material)">{{material.Stock}}</ion-col>
       <ion-col>
         <div>
-          <ion-button (click)="agregarCarrito(item)" *ngIf="item.carrito == 0" color="primary">
+          <ion-button (click)="Aumentar(material)" *ngIf="material.Carrito == 0" color="primary">
             <ion-icon name="cart" slot="start"></ion-icon>
-            <ion-label slot="end">{{item.carrito}}</ion-label>
+            <ion-label slot="end">{{material.Carrito}}</ion-label>
           </ion-button>
-          <ion-button (click)="aumentar(item)" *ngIf="item.carrito > 0" color="success">
+          <ion-button (click)="Aumentar(material)" *ngIf="material.Carrito > 0" color="success">
             <ion-icon name="cart" slot="start"></ion-icon>
-            <ion-label slot="end">{{item.carrito}}</ion-label>
+            <ion-label slot="end">{{material.Carrito}}</ion-label>
           </ion-button>
-          <ion-button slot="end" (click)="reducir(item)" *ngIf="item.carrito > 0" color="danger">
+          <ion-button slot="end" (click)="Reducir(material)" *ngIf="material.carrito > 0" color="danger">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </div>

@@ -4,6 +4,11 @@ export class Carrito {
   private cantidad: number;
   private lineas: Array<Linea>;
 
+
+  get Lineas() : Array<Linea>{
+    return this.lineas;
+  }
+
   constructor() {
     this.lineas = new Array<Linea>(0);
     this.cantidad = 0;
@@ -47,9 +52,5 @@ export class Carrito {
       return linea.Cantidad;
     else
       return 0;
-  }
-
-  ObtenerLineas() : Array<Linea>{
-    return this.lineas;
   }
 }

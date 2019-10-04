@@ -7,7 +7,7 @@ export class BaseDeDatos {
   private materiales: Array<Material>;
 
   constructor() {
-    this.materiales = new Array<Material>(20);
+    this.materiales = new Array<Material>();
     for (let i = 0; i < 20; i++) {
       this.materiales.push(
         new Material(

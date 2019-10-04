@@ -9,10 +9,10 @@ import { Linea } from 'src/model/Linea';
   styleUrls: ['./carrito.page.scss'],
 })
 export class CarritoPage implements OnInit {
-  public items: Array<Material> = [];
+  public materiales: Array<Material> = [];
 
   constructor(private variables: VariablesService) {
-    this.items = this.ConvertirAMateriales(variables.carrito.ObtenerLineas());
+    this.materiales = this.ConvertirAMateriales(variables.Carrito.Lineas);
   }
 
   ngOnInit() {}
@@ -21,9 +21,18 @@ export class CarritoPage implements OnInit {
   {
     var materiales : Array<Material> = [];
     lineas.forEach(linea => {
-      materiales.push(this.variables.baseDeDatos.ObtenerMaterial(linea.IdMaterial))
+      materiales.push(this.variables.BaseDeDatos.ObtenerMaterial(linea.IdMaterial))
     });
 
     return materiales;
+  }
+
+  Aumentar(material : Material){
+    material.Carrito++;
+    this.variables.Carrito.Aumentar(material.Id);
+  }
+  Reducir(material : Material){
+    material.Carrito--;
+    this.variables.Carrito.Reducir(material.Id);
   }
 }

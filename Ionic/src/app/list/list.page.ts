@@ -15,7 +15,6 @@ export class ListPage implements OnInit {
   constructor(private variables: VariablesService, private modalController: ModalController, private router: Router,
     public alertController: AlertController) {
     this.materiales = variables.BaseDeDatos.MaterialesDesdeHasta(0, 19);
-    alert(this.materiales[0].Titulo);
   }
   ngOnInit() { }
 
@@ -32,7 +31,7 @@ export class ListPage implements OnInit {
     return await modal.present();
   }
 
-  clickMaterial(material: Material) {
+  ClickMaterial(material: Material) {
     this.MostrarMaterial(material);
   }
 
@@ -59,11 +58,7 @@ export class ListPage implements OnInit {
     alerta.onDidDismiss().then(x => this.alertaCarrito = false);
   }
 
-  AgregarCarrito(material: Material) {
-    material.Carrito++;
-    this.variables.Carrito.Aumentar(material.Id);
-  }
-  Aumentar(material: Material) {
+  AgregarACarrito(material: Material) {
     material.Carrito++;
     this.variables.Carrito.Aumentar(material.Id);
   }
