@@ -31,7 +31,7 @@ module Libreria {
             anulada:boolean;
             monto:number;
             fecha:Date;
-            nombreMedioDePago:string;
+            medioDePago:number;
             lineasDeVenta:Array<LineaDeVentaDto>;
         }
 
