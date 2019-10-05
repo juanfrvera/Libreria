@@ -6,7 +6,7 @@ module Libreria {
         }
 
         //DTOs de los objetos del dominio
-        export class MaterialDto {
+        export class MaterialDto extends DtoBase {
             titulo: string;
             isbn:string;
             edicion:number;
@@ -20,14 +20,14 @@ module Libreria {
             proveedor:number;
         }
 
-        export class ProveedorDto {
+        export class ProveedorDto extends DtoBase {
             nombre:string;
             email:string;
             contacto:string;
             observaciones:string;
         }
 
-        export class VentaDto {
+        export class VentaDto extends DtoBase {
             anulada:boolean;
             monto:number;
             fecha:Date;
@@ -35,25 +35,23 @@ module Libreria {
             lineasDeVenta:Array<LineaDeVentaDto>;
         }
 
-        export class LineaDeVentaDto {
+        export class LineaDeVentaDto extends DtoBase {
             cantidad:number;
             precio:number;
             desecuento:number;
-            idMaterial:number;
         }
 
-        export class VentasLiteDto {
+        export class VentasLiteDto extends DtoBase {
             anulada:boolean;
             monto:number;
             fecha:Date;
             nombreMedioDePago:string;
         }
 
-        export class MedioDePagoDto {
+        export class MedioDePagoDto extends DtoBase {
             nombre:string;
             comision: number;
             tipo:TipoDeCargoDto;
-            id:number;
         }
 
         export enum TipoDeCargoDto {
@@ -61,15 +59,13 @@ module Libreria {
             porcentual
         }
 
-        export class CategoriaDto {
+        export class CategoriaDto extends DtoBase {
             nombre:string;
-            id:number;
         }
 
-        export class AutorDto {
+        export class AutorDto extends DtoBase {
             nombres:Array<string>;
             apellidos:Array<string>;
-            id:number;
         }
 
         //DTOs filtros
