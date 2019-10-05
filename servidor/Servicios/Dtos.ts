@@ -42,6 +42,13 @@ module Libreria {
             idMaterial:number;
         }
 
+        export class VentasLiteDto {
+            anulada:boolean;
+            monto:number;
+            fecha:Date;
+            nombreMedioDePago:string;
+        }
+
         //DTOs filtros
         export class FiltroMaterialDto {}
     }
