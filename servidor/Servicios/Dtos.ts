@@ -27,6 +27,21 @@ module Libreria {
             observaciones:string;
         }
 
+        export class VentaDto {
+            anulada:boolean;
+            monto:number;
+            fecha:Date;
+            nombreMedioDePago:string;
+            lineasDeVenta:Array<LineaDeVentaDto>;
+        }
+
+        export class LineaDeVentaDto {
+            cantidad:number;
+            precio:number;
+            desecuento:number;
+            idMaterial:number;
+        }
+
         //DTOs filtros
         export class FiltroMaterialDto {}
     }
