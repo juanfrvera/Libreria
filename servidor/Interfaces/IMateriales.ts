@@ -9,7 +9,7 @@ namespace Libreria {
         export interface IMateriales {
             EliminarMaterial(id: number): void;
 
-            AgregarMateriales(materiales: Array<MaterialDto>): number;
+            AgregarMateriales(materiales: Array<MaterialDto>): void;
 
             ListarMateriales(filtro: FiltroMaterialDto): Array<MaterialDto>;
 
@@ -18,6 +18,14 @@ namespace Libreria {
             ConsultarMaterial(id:number):MaterialDto;
 
             EliminarMaterial(id:number):void;
+        }
+
+        export interface IVentas {
+            AgregarVenta(unaVenta:VentaDto):void;
+            ListarVentas(unFiltro: FiltroVentasDto):Array<VentasLiteDto>;
+            ConsultarVenta(id:number):VentaDto;
+            AnularVenta(id:number):void;
+            EsNula(id:number):boolean;
         }
     }
 }
