@@ -27,5 +27,13 @@ namespace Libreria {
             AnularVenta(id:number):void;
             EsNula(id:number):boolean;
         }
+
+        export interface IDataManager {
+            Consultar(id:number):DtoBase;
+            Agregar(unElemento:DtoBase):void;
+            Listar(): Array<DtoBase>;
+            Eliminar(id:number):number;
+            Actualizar(nuevoElemento:DtoBase):void;
+        }
     }
 }
