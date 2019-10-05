@@ -56,6 +56,11 @@ module Libreria {
             id:number;
         }
 
+        export class CategoriaDto {
+            nombre:string;
+            id:number;
+        }
+
         export enum TipoDeCargoDto {
             fijo,
             porcentual
