@@ -1,0 +1,5 @@
+# Default ignored files
+/workspace.xml
+
+#directorio de compilación
+Servidor/build
