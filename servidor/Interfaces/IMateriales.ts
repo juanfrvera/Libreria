@@ -1,15 +1,23 @@
-///<reference path="../Servicios/MaterialDto.ts" />
-namespace Libreria.Interfaces {
+///<reference path="../Servicios/Dtos.ts" />
+import MaterialDto = Libreria.Servicios.MaterialDto;
+import FiltroMaterialDto = Libreria.Servicios.FiltroMaterialDto;
 
-    import MaterialDto = Libreria.Servicios.MaterialDto;
+namespace Libreria {
+    namespace Interfaces
+    {
 
-    interface IMateriales {
-        EliminarMaterial(id: number): void;
+        export interface IMateriales {
+            EliminarMaterial(id: number): void;
 
-        AgregarMateriales(materiales: Array<MaterialDto>): number;
+            AgregarMateriales(materiales: Array<MaterialDto>): number;
 
-        ListarMateriales(filtro: FiltroMaterialDto): Array<MaterialDto>;
+            ListarMateriales(filtro: FiltroMaterialDto): Array<MaterialDto>;
 
-        ActualizarMaterial()
+            ActualizarMaterial(nuevoMaterial:MaterialDto):void;
+
+            ConsultarMaterial(id:number):MaterialDto;
+
+            EliminarMaterial(id:number):void;
+        }
     }
 }
