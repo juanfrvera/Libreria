@@ -49,6 +49,18 @@ module Libreria {
             nombreMedioDePago:string;
         }
 
+        export class MedioDePagoDto {
+            nombre:string;
+            comision: number;
+            tipo:TipoDeCargoDto;
+            id:number;
+        }
+
+        export enum TipoDeCargoDto {
+            fijo,
+            porcentual
+        }
+
         //DTOs filtros
         export class FiltroMaterialDto {}
     }
