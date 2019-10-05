@@ -56,14 +56,20 @@ module Libreria {
             id:number;
         }
 
+        export enum TipoDeCargoDto {
+            fijo,
+            porcentual
+        }
+
         export class CategoriaDto {
             nombre:string;
             id:number;
         }
 
-        export enum TipoDeCargoDto {
-            fijo,
-            porcentual
+        export class AutorDto {
+            nombres:Array<string>;
+            apellidos:Array<string>;
+            id:number;
         }
 
         //DTOs filtros
