@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 var typeorm_1 = require("typeorm");
 var Catalog_1 = require("./entity/Catalog");
@@ -75,4 +75,5 @@ typeorm_1.createConnection({
                 return [2 /*return*/];
         }
     });
-}); })["catch"](function (error) { return console.log(error); });
+}); }).catch(function (error) { return console.log(error); });
+//# sourceMappingURL=index.js.map

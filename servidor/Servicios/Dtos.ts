@@ -1,5 +1,6 @@
 module Libreria {
     export module Servicios {
+<<<<<<< HEAD
 
         export class DtoBase {
             id:number;
@@ -7,6 +8,10 @@ module Libreria {
 
         //DTOs de los objetos del dominio
         export class MaterialDto extends DtoBase {
+=======
+        //DTOs de los objetos del dominio
+        export class MaterialDto {
+>>>>>>> master
             titulo: string;
             isbn:string;
             edicion:number;
@@ -20,6 +25,7 @@ module Libreria {
             proveedor:number;
         }
 
+<<<<<<< HEAD
         export class ProveedorDto extends DtoBase {
             nombre:string;
             email:string;
@@ -68,6 +74,8 @@ module Libreria {
             apellidos:Array<string>;
         }
 
+=======
+>>>>>>> master
         //DTOs filtros
         export class FiltroMaterialDto {}
     }
