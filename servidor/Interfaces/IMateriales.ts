@@ -17,13 +17,5 @@ namespace Libreria {
 
             EliminarMaterial(id:number):void;
         }
-
-        export interface IDataManager {
-            Consultar(id:number):Servicios.DtoBase;
-            Agregar(unElemento:Servicios.DtoBase):void;
-            Listar(): Array<Servicios.DtoBase>;
-            Eliminar(id:number):number;
-            Actualizar(nuevoElemento:Servicios.DtoBase):void;
-        }
     }
 }
