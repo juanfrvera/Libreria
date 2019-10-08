@@ -1,5 +1,5 @@
-module Libreria {
-    export module Servicios {
+namespace Libreria {
+    export namespace Servicios {
 
         export class DtoBase {
             id:number;

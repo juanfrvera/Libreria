@@ -1,6 +1,4 @@
 ///<reference path="../Servicios/Dtos.ts" />
-import MaterialDto = Libreria.Servicios.MaterialDto;
-import FiltroMaterialDto = Libreria.Servicios.FiltroMaterialDto;
 
 namespace Libreria {
     namespace Interfaces
@@ -9,31 +7,31 @@ namespace Libreria {
         export interface IMateriales {
             EliminarMaterial(id: number): void;
 
-            AgregarMateriales(materiales: Array<MaterialDto>): void;
+            AgregarMateriales(materiales: Array<Servicios.MaterialDto>): void;
 
-            ListarMateriales(filtro: FiltroMaterialDto): Array<MaterialDto>;
+            ListarMateriales(filtro: Servicios.FiltroMaterialDto): Array<Servicios.MaterialDto>;
 
-            ActualizarMaterial(nuevoMaterial:MaterialDto):void;
+            ActualizarMaterial(nuevoMaterial:Servicios.MaterialDto):void;
 
-            ConsultarMaterial(id:number):MaterialDto;
+            ConsultarMaterial(id:number):Servicios.MaterialDto;
 
             EliminarMaterial(id:number):void;
         }
 
         export interface IVentas {
-            AgregarVenta(unaVenta:VentaDto):void;
-            ListarVentas(unFiltro: FiltroVentasDto):Array<VentasLiteDto>;
-            ConsultarVenta(id:number):VentaDto;
+            AgregarVenta(unaVenta:Servicios.VentaDto):void;
+            ListarVentas(unFiltro: Servicios.FiltroVentasDto):Array<Servicios.VentasLiteDto>;
+            ConsultarVenta(id:number):Servicios.VentaDto;
             AnularVenta(id:number):void;
             EsNula(id:number):boolean;
         }
 
         export interface IDataManager {
-            Consultar(id:number):DtoBase;
-            Agregar(unElemento:DtoBase):void;
-            Listar(): Array<DtoBase>;
+            Consultar(id:number):Servicios.DtoBase;
+            Agregar(unElemento:Servicios.DtoBase):void;
+            Listar(): Array<Servicios.DtoBase>;
             Eliminar(id:number):number;
-            Actualizar(nuevoElemento:DtoBase):void;
+            Actualizar(nuevoElemento:Servicios.DtoBase):void;
         }
     }
 }
