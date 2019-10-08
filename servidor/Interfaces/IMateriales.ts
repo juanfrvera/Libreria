@@ -18,14 +18,6 @@ namespace Libreria {
             EliminarMaterial(id:number):void;
         }
 
-        export interface IVentas {
-            AgregarVenta(unaVenta:Servicios.VentaDto):void;
-            ListarVentas(unFiltro: Servicios.FiltroVentasDto):Array<Servicios.VentasLiteDto>;
-            ConsultarVenta(id:number):Servicios.VentaDto;
-            AnularVenta(id:number):void;
-            EsNula(id:number):boolean;
-        }
-
         export interface IDataManager {
             Consultar(id:number):Servicios.DtoBase;
             Agregar(unElemento:Servicios.DtoBase):void;
