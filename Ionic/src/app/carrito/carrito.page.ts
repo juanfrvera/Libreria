@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VariablesService } from './../../services/Variables';
 import { Material } from 'src/model/Material';
 import { Linea } from 'src/model/Linea';
+import { Alertas } from 'src/services/Alertas';
 
 @Component({
   selector: 'app-carrito',
@@ -11,15 +12,14 @@ import { Linea } from 'src/model/Linea';
 export class CarritoPage implements OnInit {
   public materiales: Array<Material> = [];
 
-  constructor(private variables: VariablesService) {
+  constructor(private variables: VariablesService, private alertas: Alertas) {
     this.materiales = this.ConvertirAMateriales(variables.Carrito.Lineas);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  private ConvertirAMateriales(lineas : Array<Linea>) : Array<Material>
-  {
-    var materiales : Array<Material> = [];
+  private ConvertirAMateriales(lineas: Array<Linea>): Array<Material> {
+    var materiales: Array<Material> = [];
     lineas.forEach(linea => {
       materiales.push(this.variables.BaseDeDatos.ObtenerMaterial(linea.IdMaterial))
     });
@@ -27,11 +27,16 @@ export class CarritoPage implements OnInit {
     return materiales;
   }
 
-  Aumentar(material : Material){
-    material.Carrito++;
-    this.variables.Carrito.Aumentar(material.Id);
+  Aumentar(material: Material) {
+    //Solo agregar si el stock es suficiente
+    if (material.Stock > material.Carrito) {
+      material.Carrito++;
+      this.variables.Carrito.Aumentar(material.Id);
+    }
+    else
+      this.alertas.Alertar('Stock insuficiente', 'El material seleccionado no cuenta con stock suficiente para ser agregado al carrito');
   }
-  Reducir(material : Material){
+  Reducir(material: Material) {
     material.Carrito--;
     this.variables.Carrito.Reducir(material.Id);
   }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { MaterialPage } from './material/material.page';
 import { Material } from '../../model/Material';
 import { VariablesService } from './../../services/Variables';
-import { Router } from '@angular/router';
+import { Alertas } from 'src/services/Alertas';
 
 @Component({
   selector: 'app-list', templateUrl: 'list.page.html', styleUrls: ['list.page.scss']
@@ -13,7 +14,7 @@ export class ListPage implements OnInit {
   public materiales: Array<Material> = [];
 
   constructor(private variables: VariablesService, private modalController: ModalController, private router: Router,
-    public alertController: AlertController) {
+    private alertas: Alertas) {
     this.materiales = variables.BaseDeDatos.MaterialesDesdeHasta(0, 19);
   }
   ngOnInit() { }
@@ -38,30 +39,20 @@ export class ListPage implements OnInit {
   IrACarrito() {
     if (this.variables.Carrito.Cantidad > 0)
       this.router.navigate(['/carrito']);
-    else {
-      if (!this.alertaCarrito)
-        this.CarritoVacio();
-    }
-  }
-
-  //Pequenio arreglo para que no se generen muchos al apretar enter
-  private alertaCarrito: boolean = false;
-  async CarritoVacio() {
-    const alerta = await this.alertController.create({
-      header: 'Nada que vender',
-      message: 'No hay ningún material en el carrito.',
-      buttons: ['OK']
-    });
-
-    this.alertaCarrito = true;
-    await alerta.present();
-    alerta.onDidDismiss().then(x => this.alertaCarrito = false);
+    else
+      this.alertas.Alertar('Nada que vender', 'No hay ningún material en el carrito.');
   }
 
   AgregarACarrito(material: Material) {
-    material.Carrito++;
-    this.variables.Carrito.Aumentar(material.Id);
+    //Solo agregar si el stock es suficiente
+    if (material.Stock > material.Carrito) {
+      material.Carrito++;
+      this.variables.Carrito.Aumentar(material.Id);
+    }
+    else
+      this.alertas.Alertar('Stock insuficiente', 'El material seleccionado no cuenta con stock suficiente para ser agregado al carrito');
   }
+
   Reducir(material: Material) {
     material.Carrito--;
     this.variables.Carrito.Reducir(material.Id);
