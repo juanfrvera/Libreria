@@ -1,4 +1,8 @@
-$HEADER$namespace $NAMESPACE$
+namespace Negocio.Dtos
 {
-  public class $CLASS$ {$END$}
+    public class LineaDeVentaDto
+    {
+        public int cantidad, idMaterial;
+        public float precio, descuento;
+    }
 }

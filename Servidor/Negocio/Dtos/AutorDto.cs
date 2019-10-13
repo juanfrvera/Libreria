@@ -1,4 +1,7 @@
-$HEADER$namespace $NAMESPACE$
+namespace Negocio.Dtos
 {
-  public class $CLASS$ {$END$}
+    public class AutorDto
+    {
+        public string nombre;
+    }
 }

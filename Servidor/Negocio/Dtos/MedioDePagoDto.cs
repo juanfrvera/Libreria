@@ -1,7 +1,9 @@
 namespace Negocio.Dtos
 {
-    public class MedioDePagoDto
+    public class MedioDePagoDto :DtoBase
     {
-        
+        public string nombre;
+        public float comision;
+        public string tipo;
     }
 }

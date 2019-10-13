@@ -1,7 +1,7 @@
 namespace Negocio.Dtos
 {
-    public class CategoriaDto
+    public class CategoriaDto : DtoBase
     {
-        
+        public string nombre;
     }
 }
