@@ -26,6 +26,13 @@ export class AppService {
       autor: "Carl Johnson",
       precio: 150,
       stock: 0
+    },
+    {
+      id: 4,
+      titulo: "Material 4 de título medio largo",
+      autor: "Autor de nombre largo, con varios apellidos",
+      precio: 1000,
+      stock: 10
     }
   ];
 

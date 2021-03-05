@@ -7,10 +7,16 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of Lista">
-      <div class="titulo">{{item.titulo}}</div>
-      <div class="autor">{{item.autor}}</div>
-      <div class="precio">{{item.precio}}</div>
-      <div class="stock">{{item.stock}}</div>
+      <div class="material">
+        <div class="principal">
+          <div class="titulo">{{item.titulo}}</div>
+          <div class="autor">{{item.autor}}</div>
+        </div>
+        <div class="extra">
+          <div class="precio">{{item.precio}}</div>
+          <div class="stock">{{item.stock}}</div>
+        </div>
+      </div>
     </ion-item>
   </ion-list>
 

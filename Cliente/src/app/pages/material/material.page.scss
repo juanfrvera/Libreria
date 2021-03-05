@@ -1,0 +1,25 @@
+ion-item{
+    margin-bottom: 5px;
+}
+
+.material {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .titulo {
+        font-size: 1.25em;
+    }
+    .autor {
+        font-size: 0.75em;
+    }
+
+    .extra {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.precio::before {
+    content: "$";
+}
