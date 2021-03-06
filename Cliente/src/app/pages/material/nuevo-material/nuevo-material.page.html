@@ -5,7 +5,18 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label position="floating">Título</ion-label>
+    <ion-input [(ngModel)]="datos.titulo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre de autor</ion-label>
+    <ion-input [(ngModel)]="datos.nombreAutor"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input [(ngModel)]="datos.precio"></ion-input>
+  </ion-item>
 </ion-content>
 
 <ion-footer>
