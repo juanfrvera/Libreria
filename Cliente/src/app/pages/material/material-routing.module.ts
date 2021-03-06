@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MaterialPage
+  },
+  {
+    path: 'nuevo-material',
+    loadChildren: () => import('./nuevo-material/nuevo-material.module').then( m => m.NuevoMaterialPageModule)
   }
 ];
 

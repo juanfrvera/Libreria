@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonInfiniteScroll } from '@ionic/angular';
+import { IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { IMaterialCrearDto } from '../../data/dto/material-crear-dto';
 import { AppService } from '../../services/app.service';
+import { NuevoMaterialPage } from './nuevo-material/nuevo-material.page';
 
 @Component({
   selector: 'app-material',
@@ -14,7 +16,7 @@ export class MaterialPage implements OnInit {
     return this.app.Materiales;
   }
 
-  constructor(private app: AppService) { }
+  constructor(private app: AppService, private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -34,6 +36,19 @@ export class MaterialPage implements OnInit {
   }
 
   public clickNuevo() {
-    
+    this.mostrarModalNuevo();
+  }
+
+  private async mostrarModalNuevo() {
+    const modal = await this.modalController.create({
+      component: NuevoMaterialPage,
+      cssClass: 'modal-nuevo-material'
+    });
+    await modal.present();
+    const { data: resultado } = await modal.onDidDismiss<IMaterialCrearDto>();
+
+    if (resultado) {
+      this.app.crearMaterial(resultado);
+    }
   }
 }
