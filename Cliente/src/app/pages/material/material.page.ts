@@ -32,4 +32,8 @@ export class MaterialPage implements OnInit {
       }
     }, 500);
   }
+
+  public clickNuevo() {
+    
+  }
 }
