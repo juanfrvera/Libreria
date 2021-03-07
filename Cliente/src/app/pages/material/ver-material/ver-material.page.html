@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>verMaterial</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="clickCerrar()">
+        <ion-icon slot="icon-only" name="arrow-back-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="clickEditar()" color="warning">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button (click)="clickEliminar()" color="danger">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label>Título</ion-label>
+    <ion-text>{{materialLiviano.titulo}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Autor</ion-label>
+    <ion-text>{{materialLiviano.nombreAutor}}</ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-label>Stock</ion-label>
+    <ion-text>{{materialLiviano.stock ? materialLiviano.stock : 0}}</ion-text>
+  </ion-item>
+  <div class="extra">
+    <div *ngIf="!material">
+      <ion-spinner></ion-spinner>
+    </div>
+    <div *ngIf="material">
+      <ion-item>
+        <ion-label>Precio</ion-label>
+        <ion-text>{{material.precio}}</ion-text>
+      </ion-item>
+    </div>
+  </div>
 </ion-content>

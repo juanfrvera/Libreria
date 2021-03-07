@@ -43,7 +43,7 @@ export class MaterialPage implements OnInit {
   }
 
   public click(material: IMaterialListarDto) {
-    const materialCompleto = this.app.obtenerMaterial(material.id);
+    this.mostrarModalVer(material);
   }
 
   public clickNuevo() {
@@ -72,12 +72,12 @@ export class MaterialPage implements OnInit {
     }
   }
 
-  private async mostrarModalVer(material: IMaterialDto) {
+  private async mostrarModalVer(material: IMaterialListarDto) {
     const modal = await this.modalController.create({
       component: VerMaterialPage,
       cssClass: 'modal-ver-material',
       componentProps: {
-        material: material
+        materialLiviano: material
       }
     });
     await modal.present();
