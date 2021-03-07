@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Accion } from '../../../data/comunicacion/accion-ver-entidad';
-import { IResultadoVerMaterial } from '../../../data/comunicacion/resultado-ver-material';
+import { AccionABM } from '../../../data/comunicacion/accion-ver-entidad';
 import { IMaterialDto } from '../../../data/dto/material-dto';
 import { IMaterialListarDto } from '../../../data/dto/material-listar-dto';
 import { AppService } from '../../../services/app.service';
@@ -17,7 +16,7 @@ export class VerMaterialPage implements OnInit {
   @Input() private materialLiviano: IMaterialListarDto;
 
   private editando: boolean;
-  private guardando: boolean;
+  private trabajando: boolean;
   private material: IMaterialDto;
   private materialEditado: IMaterialDto;
 
@@ -25,9 +24,9 @@ export class VerMaterialPage implements OnInit {
     return this.editando;
   }
 
-  /** Cuando se está guardando la edición */
-  public get Guardando() {
-    return this.guardando;
+  /** Cuando se está guardando la edición o eliminando*/
+  public get Trabajando() {
+    return this.trabajando;
   }
 
   public get Material() {
@@ -58,7 +57,7 @@ export class VerMaterialPage implements OnInit {
   }
 
   public clickAceptarEdicion() {
-    this.guardando = true;
+    this.trabajando = true;
     this.app.editarMaterial(this.Id, this.MaterialEditado).subscribe(() => {
       // Actualizar datos
       this.material = this.materialEditado;
@@ -66,7 +65,7 @@ export class VerMaterialPage implements OnInit {
       this.materialLiviano.titulo = this.materialEditado.titulo;
       this.materialLiviano.nombreAutor = this.materialEditado.nombreAutor;
 
-      this.guardando = false;
+      this.trabajando = false;
       this.editando = false;
     });
   }
@@ -80,15 +79,18 @@ export class VerMaterialPage implements OnInit {
   }
 
   public clickEditar() {
-    // Si ya está cargado el material completo
-    if (this.Material) {
-      this.materialEditado = Util.copiaProfunda(this.Material);
-    }
-    else {
-      this.materialEditado = {
-        id: this.Id,
-        titulo: this.MaterialLiviano.titulo,
-        nombreAutor: this.MaterialLiviano.nombreAutor
+    // Si no se cargó el material editado anteriormente
+    if (!this.materialEditado) {
+      // Si ya está cargado el material completo
+      if (this.Material) {
+        this.materialEditado = Util.copiaProfunda(this.Material);
+      }
+      else {
+        this.materialEditado = {
+          id: this.Id,
+          titulo: this.MaterialLiviano.titulo,
+          nombreAutor: this.MaterialLiviano.nombreAutor
+        }
       }
     }
 
@@ -96,11 +98,10 @@ export class VerMaterialPage implements OnInit {
   }
 
   public clickEliminar() {
-    const respuesta: IResultadoVerMaterial = {
-      accion: Accion.Eliminar
-    };
-
-    this.modalController.dismiss(respuesta);
+    this.trabajando = true;
+    this.app.eliminarMaterial(this.Id).subscribe(() => {
+      this.modalController.dismiss(AccionABM.Eliminar);
+      this.trabajando = false;
+    });
   }
-
 }

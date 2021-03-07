@@ -1,4 +1,4 @@
-export enum Accion {
+export enum AccionABM {
     Editar,
     Eliminar
 }
