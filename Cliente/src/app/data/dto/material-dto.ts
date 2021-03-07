@@ -4,7 +4,7 @@ export interface IMaterialDto {
     titulo: string;
     /** Nombre del autor */
     nombreAutor: string;
-    precio: number;
+    precio?: number;
     /** Cantidad disponible */
-    stock: number;
+    stock?: number;
 }

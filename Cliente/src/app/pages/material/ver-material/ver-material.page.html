@@ -1,15 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start" class="acciones">
-      <ion-button (click)="clickCerrar()">
-        <ion-icon slot="icon-only" name="arrow-back-circle"></ion-icon>
-      </ion-button>
-      <ion-button (click)="clickEditar()" color="warning">
-        <ion-icon slot="icon-only" name="create"></ion-icon>
-      </ion-button>
-      <ion-button (click)="clickEliminar()" color="danger">
-        <ion-icon slot="icon-only" name="trash"></ion-icon>
-      </ion-button>
+      <ng-template [ngIf]="!Editando" [ngIfElse]="accionesEdicion">
+        <ion-button (click)="clickCerrar()">
+          <ion-icon slot="icon-only" name="arrow-back-circle"></ion-icon>
+        </ion-button>
+        <ion-button (click)="clickEditar()" color="warning">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button>
+        <ion-button (click)="clickEliminar()" color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ng-template>
+      <ng-template #accionesEdicion>
+        <ion-button (click)="clickCancelarEdicion()" color="danger">
+          <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+        </ion-button>
+        <ion-button [disabled]="!MaterialEditado.titulo || Guardando" (click)="clickAceptarEdicion()" color="success">
+          <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+        </ion-button>
+        <ion-spinner [hidden]="!Guardando"></ion-spinner>
+      </ng-template>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,24 +28,27 @@
 <ion-content>
   <ion-item>
     <ion-label>Título</ion-label>
-    <ion-text>{{materialLiviano.titulo}}</ion-text>
+    <ion-text [hidden]="Editando" slot="end">{{MaterialLiviano.titulo}}</ion-text>
+    <ion-input *ngIf="Editando" [(ngModel)]="MaterialEditado.titulo"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Autor</ion-label>
-    <ion-text>{{materialLiviano.nombreAutor}}</ion-text>
+    <ion-text [hidden]="Editando" slot="end">{{MaterialLiviano.nombreAutor}}</ion-text>
+    <ion-input *ngIf="Editando" [(ngModel)]="MaterialEditado.nombreAutor"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Stock</ion-label>
-    <ion-text>{{materialLiviano.stock ? materialLiviano.stock : 0}}</ion-text>
+    <ion-text>{{MaterialLiviano.stock ? MaterialLiviano.stock : 0}}</ion-text>
   </ion-item>
   <div class="extra">
-    <div *ngIf="!material">
+    <div *ngIf="!Material">
       <ion-spinner></ion-spinner>
     </div>
-    <div *ngIf="material">
+    <div *ngIf="Material">
       <ion-item>
         <ion-label>Precio</ion-label>
-        <ion-text>{{material.precio}}</ion-text>
+        <ion-text [hidden]="Editando" slot="end">{{Material.precio}}</ion-text>
+        <ion-input *ngIf="Editando" [(ngModel)]="MaterialEditado.precio"></ion-input>
       </ion-item>
     </div>
   </div>

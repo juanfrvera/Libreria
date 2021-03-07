@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    env.usarServerFalso ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService) : []
+    env.usarServerFalso ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 1000 }) : []
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
