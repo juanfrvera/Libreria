@@ -13,6 +13,10 @@ export class AppService {
     return this.server.crearMaterial(datos);
   }
 
+  public eliminarMaterial(id: number) {
+    return this.server.eliminarMaterial(id);
+  }
+
   public obtenerListaMateriales() {
     return this.server.obtenerListaMateriales();
   }

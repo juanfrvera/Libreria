@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Accion } from '../../../data/comunicacion/accion-ver-entidad';
+import { IResultadoVerMaterial } from '../../../data/comunicacion/resultado-ver-material';
 import { IMaterialDto } from '../../../data/dto/material-dto';
 import { IMaterialListarDto } from '../../../data/dto/material-listar-dto';
 import { AppService } from '../../../services/app.service';
@@ -25,6 +27,14 @@ export class VerMaterialPage implements OnInit {
 
   public clickCerrar() {
     this.modalController.dismiss();
+  }
+
+  public clickEliminar() {
+    const respuesta: IResultadoVerMaterial = {
+      accion: Accion.Eliminar
+    };
+
+    this.modalController.dismiss(respuesta);
   }
 
 }

@@ -16,6 +16,10 @@ export class ServerService {
     return this.http.post<IMaterialDto>(this.api + "materiales", datos);
   }
 
+  public eliminarMaterial(id: number) {
+    return this.http.delete(this.api + "materiales/" + id);
+  }
+
   public obtenerListaMateriales() {
     return this.http.get<IMaterialListarDto[]>(this.api + "materiales");
   }
