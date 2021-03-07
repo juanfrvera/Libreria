@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll, ModalController } from '@ionic/angular';
+import { IMaterialDto } from '../../data/dto/material-dto';
 import { IMaterialCrearDto } from '../../data/dto/material-crear-dto';
+import { IMaterialListarDto } from '../../data/dto/material-listar-dto';
 import { AppService } from '../../services/app.service';
 import { NuevoMaterialPage } from './nuevo-material/nuevo-material.page';
+import { VerMaterialPage } from './ver-material/ver-material.page';
 
 @Component({
   selector: 'app-material',
@@ -12,13 +15,17 @@ import { NuevoMaterialPage } from './nuevo-material/nuevo-material.page';
 export class MaterialPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
+
+  private lista: IMaterialListarDto[];
+
   public get Lista() {
-    return this.app.Materiales;
+    return this.lista;
   }
 
   constructor(private app: AppService, private modalController: ModalController) { }
 
   ngOnInit() {
+    this.cargarLista();
   }
 
   // Cuando el infinite scroll es triggereado
@@ -35,6 +42,10 @@ export class MaterialPage implements OnInit {
     }, 500);
   }
 
+  public click(material: IMaterialListarDto) {
+    const materialCompleto = this.app.obtenerMaterial(material.id);
+  }
+
   public clickNuevo() {
     this.mostrarModalNuevo();
   }
@@ -48,7 +59,33 @@ export class MaterialPage implements OnInit {
     const { data: resultado } = await modal.onDidDismiss<IMaterialCrearDto>();
 
     if (resultado) {
-      this.app.crearMaterial(resultado);
+      this.app.crearMaterial(resultado).subscribe(creado => {
+        const elementoLiviano: IMaterialListarDto = {
+          id: creado.id,
+          titulo: creado.titulo,
+          nombreAutor: creado.nombreAutor,
+          stock: creado.stock
+        };
+
+        this.lista.push(elementoLiviano);
+      });
     }
+  }
+
+  private async mostrarModalVer(material: IMaterialDto) {
+    const modal = await this.modalController.create({
+      component: VerMaterialPage,
+      cssClass: 'modal-ver-material',
+      componentProps: {
+        material: material
+      }
+    });
+    await modal.present();
+  }
+
+  private cargarLista() {
+    this.app.obtenerListaMateriales().subscribe(respuesta => {
+      this.lista = respuesta;
+    });
   }
 }

@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'nuevo-material',
     loadChildren: () => import('./nuevo-material/nuevo-material.module').then( m => m.NuevoMaterialPageModule)
+  },
+  {
+    path: 'ver-material',
+    loadChildren: () => import('./ver-material/ver-material.module').then( m => m.VerMaterialPageModule)
   }
 ];
 
