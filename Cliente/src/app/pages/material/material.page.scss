@@ -16,8 +16,12 @@ ion-item {
 
     .extra {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
+}
+
+.material > *{
+    flex-grow: 1;
 }
 
 .precio::before {
