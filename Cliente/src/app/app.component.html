@@ -10,10 +10,12 @@
         </ion-item>
       </ion-header>
       <ion-content>
-        <ion-item *ngFor="let p of Paginas; let i = index" (click)="indicePagina = i" routerDirection="root"
-          [routerLink]="[p.url]" lines="none" detail="false" [class.seleccionado]="indicePagina == i">
-          <ion-label>{{p.nombre}}</ion-label>
-        </ion-item>
+        <ion-menu-toggle auto-hide="false" *ngFor="let p of Paginas; let i = index">
+          <ion-item (click)="indicePagina = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+            [class.seleccionado]="indicePagina == i">
+            <ion-label>{{p.nombre}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-content>
     </ion-menu>
 
