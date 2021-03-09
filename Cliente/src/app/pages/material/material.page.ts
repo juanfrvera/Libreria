@@ -16,8 +16,17 @@ import { Util } from '../../util';
 export class MaterialPage implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
-
+  private busqueda: string;
+  private cargando: boolean = true;
   private lista: IMaterialListarDto[];
+
+  public set Busqueda(valor: string) {
+    this.busqueda = valor;
+  }
+
+  public get Cargando() {
+    return this.cargando;
+  }
 
   public get Lista() {
     return this.lista;
@@ -26,6 +35,10 @@ export class MaterialPage implements OnInit {
   constructor(private app: AppService, private modalController: ModalController) { }
 
   ngOnInit() {
+    this.cargarLista();
+  }
+
+  public busquedaCambiada() {
     this.cargarLista();
   }
 
@@ -97,8 +110,10 @@ export class MaterialPage implements OnInit {
   }
 
   private cargarLista() {
-    this.app.obtenerListaMateriales().subscribe(respuesta => {
+    this.cargando = true;
+    this.app.obtenerListaMateriales(this.busqueda).subscribe(respuesta => {
       this.lista = respuesta;
+      this.cargando = false;
     });
   }
 }

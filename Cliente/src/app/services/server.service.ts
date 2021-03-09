@@ -24,8 +24,8 @@ export class ServerService {
     return this.http.delete(this.api + "materiales/" + id);
   }
 
-  public obtenerListaMateriales() {
-    return this.http.get<IMaterialListarDto[]>(this.api + "materiales");
+  public obtenerListaMateriales(buscado: string = "") {
+    return this.http.get<IMaterialListarDto[]>(this.api + "materiales/?titulo=" + buscado);
   }
 
   public obtenerMaterial(id: number) {

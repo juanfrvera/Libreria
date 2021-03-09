@@ -22,8 +22,8 @@ export class AppService {
     return this.server.eliminarMaterial(id);
   }
 
-  public obtenerListaMateriales() {
-    return this.server.obtenerListaMateriales();
+  public obtenerListaMateriales(buscado: string = "") {
+    return this.server.obtenerListaMateriales(buscado);
   }
 
   /**
