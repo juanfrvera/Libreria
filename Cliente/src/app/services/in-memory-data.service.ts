@@ -1,8 +1,9 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
+import { IMaterialDto } from '../data/dto/material-dto';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    let materiales = [
+    let materiales: IMaterialDto[] = [
       {
         id: 1,
         titulo: "Material 1",
