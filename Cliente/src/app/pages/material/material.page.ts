@@ -7,6 +7,7 @@ import { NuevoMaterialPage } from './nuevo-material/nuevo-material.page';
 import { VerMaterialPage } from './ver-material/ver-material.page';
 import { AccionABM } from '../../data/comunicacion/accion-ver-entidad';
 import { Util } from '../../util';
+import { IMaterialDto } from '../../data/dto/material-dto';
 
 @Component({
   selector: 'app-material',
@@ -70,19 +71,18 @@ export class MaterialPage implements OnInit {
       cssClass: 'modal-nuevo-material'
     });
     await modal.present();
-    const { data: resultado } = await modal.onDidDismiss<IMaterialCrearDto>();
+    const { data: resultado } = await modal.onDidDismiss<IMaterialDto>();
 
     if (resultado) {
-      this.app.crearMaterial(resultado).subscribe(creado => {
-        const elementoLiviano: IMaterialListarDto = {
-          id: creado.id,
-          titulo: creado.titulo,
-          nombreAutor: creado.nombreAutor,
-          stock: creado.stock
-        };
+      // Convertir el elemento creado a un elemento liviano para listarlo
+      const elementoLiviano: IMaterialListarDto = {
+        id: resultado.id,
+        titulo: resultado.titulo,
+        nombreAutor: resultado.nombreAutor,
+        stock: resultado.stock
+      };
 
-        this.lista.push(elementoLiviano);
-      });
+      this.lista.push(elementoLiviano);
     }
   }
 
