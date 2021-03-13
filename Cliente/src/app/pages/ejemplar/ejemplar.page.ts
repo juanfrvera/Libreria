@@ -12,4 +12,10 @@ export class EjemplarPage implements OnInit {
   ngOnInit() {
   }
 
+  public clickEgreso() {
+
+  }
+  public clickIngreso() {
+
+  }
 }
