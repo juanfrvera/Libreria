@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: EjemplarPage
+  },
+  {
+    path: 'movimiento-ejemplar',
+    loadChildren: () => import('./movimiento-ejemplar/movimiento-ejemplar.module').then( m => m.MovimientoEjemplarPageModule)
   }
 ];
 
