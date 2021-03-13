@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { IMaterialCrearDto } from '../data/dto/material-crear-dto';
 import { IMaterialDto } from '../data/dto/material-dto';
 import { IMaterialListarDto } from '../data/dto/material-listar-dto';
@@ -8,9 +9,17 @@ import { IMaterialListarDto } from '../data/dto/material-listar-dto';
   providedIn: 'root'
 })
 export class ServerService {
-  private readonly api = "api/";
+  private readonly apiFalsa = "api/";
+  private readonly apiReal = "localhost:3001/api/";
 
-  constructor(private http: HttpClient) { }
+  private readonly api;
+
+  constructor(private http: HttpClient) {
+    if (environment.usarServerFalso)
+      this.api = this.apiFalsa;
+    else
+      this.api = this.apiReal;
+  }
 
   public crearMaterial(datos: IMaterialCrearDto) {
     return this.http.post<IMaterialDto>(this.api + "materiales", datos);
