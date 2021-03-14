@@ -10,7 +10,7 @@ import { IMaterialListarDto } from '../data/dto/material-listar-dto';
 })
 export class ServerService {
   private readonly apiFalsa = "api/";
-  private readonly apiReal = "localhost:3001/api/";
+  private readonly apiReal = "http://localhost:3001/api/";
 
   private readonly api;
 
