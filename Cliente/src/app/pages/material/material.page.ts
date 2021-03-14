@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonInfiniteScroll, ModalController } from '@ionic/angular';
-import { IMaterialCrearDto } from '../../data/dto/material-crear-dto';
 import { IMaterialListarDto } from '../../data/dto/material-listar-dto';
 import { AppService } from '../../services/app.service';
 import { NuevoMaterialPage } from './nuevo-material/nuevo-material.page';

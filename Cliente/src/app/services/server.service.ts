@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { IMaterialCrearDto } from '../data/dto/material-crear-dto';
 import { IMaterialDto } from '../data/dto/material-dto';
 import { IMaterialListarDto } from '../data/dto/material-listar-dto';
+import { IMovimientoEjemplarListarDto } from '../data/dto/movimiento-ejemplar-listar-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class ServerService {
 
   public obtenerMaterial(id: number) {
     return this.http.get<IMaterialDto>(this.api + "materiales/" + id);
+  }
+
+  public obtenerListaMovimientosEjemplares() {
+    return this.http.get<IMovimientoEjemplarListarDto[]>(this.api + "movimientosEjemplares");
   }
 }

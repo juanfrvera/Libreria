@@ -33,4 +33,8 @@ export class AppService {
   public obtenerMaterial(id: number) {
     return this.server.obtenerMaterial(id);
   }
+
+  public obtenerListaMovimientosEjemplares() {
+    return this.server.obtenerListaMovimientosEjemplares();
+  }
 }

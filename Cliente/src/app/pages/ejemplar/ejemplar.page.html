@@ -20,13 +20,14 @@
   </ion-fab>
   <ion-list *ngIf="!Cargando">
     <ion-item *ngFor="let item of Lista" (click)="click(item)" button>
-      <div class="material">
+      <div class="item">
         <div class="principal">
-          <div class="titulo">{{item.titulo}}</div>
-          <div class="autor">{{item.nombreAutor}}</div>
+          <div class="nombre-material">{{item.nombreMaterial}}</div>
+          <div class="cantidad">{{item.cantidad}}</div>
+          <div class="fecha">{{item.fecha}}</div>
         </div>
         <div class="extra">
-          <div class="stock">{{item.stock ? item.stock : 0}}</div>
+          <div class="detalle">{{item.detalle}}</div>
         </div>
       </div>
     </ion-item>
@@ -34,7 +35,7 @@
 
   <ion-list *ngIf="Cargando">
     <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
-      <div class="material">
+      <div class="item">
         <div class="principal">
           <div class="titulo">
             <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
