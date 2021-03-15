@@ -13,6 +13,10 @@ const routes: Routes = [
       loadChildren: p.loadChildren
     }
   }),
+  {
+    path: 'modal-seleccion-material',
+    loadChildren: () => import('./ejemplar/modal-seleccion-material/modal-seleccion-material.module').then( m => m.ModalSeleccionMaterialPageModule)
+  },
 ];
 
 @NgModule({

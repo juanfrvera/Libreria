@@ -1,49 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-searchbar (ionChange)="busquedaCambiada()" [(ngModel)]="Busqueda"></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <app-selector-material (onClick)="click($event)"></app-selector-material>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="clickNuevo()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-list *ngIf="!Cargando">
-    <ion-item *ngFor="let item of Lista" (click)="click(item)" button>
-      <div class="material">
-        <div class="principal">
-          <div class="titulo">{{item.titulo}}</div>
-          <div class="autor">{{item.nombreAutor}}</div>
-        </div>
-        <div class="extra">
-          <div class="stock">{{item.stock ? item.stock : 0}}</div>
-        </div>
-      </div>
-    </ion-item>
-  </ion-list>
-
-  <ion-list *ngIf="Cargando">
-    <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
-      <div class="material">
-        <div class="principal">
-          <div class="titulo">
-            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-          </div>
-          <div class="autor">
-            <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
-          </div>
-        </div>
-        <div class="extra">
-          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
-        </div>
-      </div>
-    </ion-item>
-  </ion-list>
-
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="cargarMas($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más datos...">
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 </ion-content>

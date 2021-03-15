@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
-
+  <!-- Item as a Button -->
+  <ion-item button (click)="buttonClick()" detail>
+    <ion-label *ngIf="!Material">
+      Material
+    </ion-label>
+    <ion-label *ngIf="Material">{{Material.titulo}}</ion-label>
+  </ion-item>
 </ion-content>
