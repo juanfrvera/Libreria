@@ -1,6 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>movimientoEjemplar</ion-title>
+    <ion-buttons slot="start" class="acciones">
+      <ion-button (click)="clickCancelar()" color="danger">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="!PuedeAceptar || Trabajando" (click)="clickAceptar()" color="success">
+        <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+      </ion-button>
+      <ion-spinner [hidden]="!Trabajando"></ion-spinner>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,5 +19,15 @@
       Material
     </ion-label>
     <ion-label *ngIf="Material">{{Material.titulo}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Cantidad</ion-label>
+    <ion-input [(ngModel)]="Datos.cantidad" inputmode="numeric" min="1" required="true" type="number"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Detalle</ion-label>
+    <ion-input [(ngModel)]="Datos.detalle" autocapitalize="on" autocomplete="on" clearInput="true" inputmode="text"
+      type="text">
+    </ion-input>
   </ion-item>
 </ion-content>

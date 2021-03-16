@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IMaterialCrearDto } from '../data/dto/material-crear-dto';
 import { IMaterialDto } from '../data/dto/material-dto';
+import { IMovimientoEjemplarCrearDto } from '../data/dto/movimiento-ejemplar-crear-dto';
 import { ServerService } from './server.service';
 
 @Injectable({
@@ -32,6 +33,10 @@ export class AppService {
    */
   public obtenerMaterial(id: number) {
     return this.server.obtenerMaterial(id);
+  }
+
+  public crearMovimientoEjemplar(datos: IMovimientoEjemplarCrearDto) {
+    return this.server.crearMovimientoEjemplar(datos);
   }
 
   public obtenerListaMovimientosEjemplares() {
