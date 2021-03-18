@@ -1,14 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start" class="acciones">
-      <ion-button (click)="clickCancelar()" color="danger">
-        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
-      </ion-button>
-      <ion-button [disabled]="!PuedeAceptar || Trabajando" (click)="clickAceptar()" color="success">
-        <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
-      </ion-button>
-      <ion-spinner [hidden]="!Trabajando"></ion-spinner>
-    </ion-buttons>
+    <ion-title>Registrar {{ModoEgreso ? 'egreso' : 'ingreso'}} de ejemplar</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -31,3 +23,16 @@
     </ion-input>
   </ion-item>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="acciones">
+      <ion-button (click)="clickCancelar()" color="danger">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="!PuedeAceptar || Trabajando" (click)="clickAceptar()" color="success">
+        <ion-icon slot="icon-only" name="checkmark-circle"></ion-icon>
+      </ion-button>
+      <ion-spinner [hidden]="!Trabajando"></ion-spinner>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

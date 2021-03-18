@@ -43,7 +43,7 @@ export class EjemplarPage implements OnInit {
       component: MovimientoEjemplarPage,
       cssClass: 'modal-movimiento-ejemplar',
       componentProps: {
-        egreso: egreso
+        modoEgreso: egreso
       }
     });
     await modal.present();

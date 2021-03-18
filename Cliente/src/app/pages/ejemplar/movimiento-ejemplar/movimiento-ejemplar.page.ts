@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IMaterialListarDto } from '../../../data/dto/material-listar-dto';
 import { IMovimientoEjemplarCrearDto } from '../../../data/dto/movimiento-ejemplar-crear-dto';
 import { AppService } from '../../../services/app.service';
+import { Util } from '../../../util';
 import { SeleccionMaterialPage } from '../seleccion-material/seleccion-material.page';
 
 @Component({
@@ -11,6 +12,9 @@ import { SeleccionMaterialPage } from '../seleccion-material/seleccion-material.
   styleUrls: ['./movimiento-ejemplar.page.scss'],
 })
 export class MovimientoEjemplarPage implements OnInit {
+  /**Cuando se registra un egreso en vez de ingreso */
+  @Input() modoEgreso: boolean;
+
   private datos = {} as IMovimientoEjemplarCrearDto;
   private material: IMaterialListarDto;
   private trabajando: boolean;
@@ -27,6 +31,9 @@ export class MovimientoEjemplarPage implements OnInit {
     this.material = valor;
     this.datos.idMaterial = valor.id;
   }
+  public get ModoEgreso() {
+    return this.modoEgreso;
+  }
   public get PuedeAceptar(): boolean {
     return !!this.Material && !!this.Datos.cantidad && this.Datos.cantidad >= 1;
   }
@@ -41,7 +48,13 @@ export class MovimientoEjemplarPage implements OnInit {
 
   public clickAceptar() {
     this.trabajando = true;
-    this.app.crearMovimientoEjemplar(this.Datos).subscribe(creado => {
+
+    // Si se está en modo egreso, la cantidad es negativa
+    const datosFinales: IMovimientoEjemplarCrearDto = Util.copiaProfunda(this.Datos);
+    if (this.ModoEgreso)
+      datosFinales.cantidad *= -1;
+
+    this.app.crearMovimientoEjemplar(datosFinales).subscribe(creado => {
       // TODO: ver si hay errores y mostrarlos, cancelando el dismiss
       this.modalController.dismiss(creado);
       this.trabajando = false;

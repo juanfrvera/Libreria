@@ -12,7 +12,11 @@ export class Util {
 
         return cadena;
     }
-    /** Devuelve una copia profunda del objeto */
+    /** Devuelve una copia profunda del objeto, esto sirve por ejemplo para que
+     * se guarden los mismos datos de un objeto en otra variable, sin referenciar al objeto original.
+     * Al no estar referenciado el original, no queda enganchada la nueva variable a cambios en el viejo
+     * ni viceversa
+     */
     public static copiaProfunda(objeto) {
         return JSON.parse(JSON.stringify(objeto));
     }
