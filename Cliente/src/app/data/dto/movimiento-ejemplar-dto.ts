@@ -7,4 +7,6 @@ export interface IMovimientoEjemplarDto {
     detalle?: string;
     // TODO: sacarle el opcional, está así por la in-memory-web-api
     nombreMaterial?: string;
+    // TODO: sacarle el opcional, está así por la in-memory-web-api
+    nombreUsuario?: string;
 }

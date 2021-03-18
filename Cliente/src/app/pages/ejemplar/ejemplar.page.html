@@ -20,11 +20,15 @@
   </ion-fab>
   <ion-list *ngIf="!Cargando">
     <ion-item *ngFor="let item of Lista" (click)="click(item)" button>
-      <div class="item">
+      <div class="contenido-item">
         <div class="izquierda">
           <div class="nombre-material">{{item.nombreMaterial ? item.nombreMaterial : 'Sin material'}}</div>
-          <div class="fecha">{{item.fecha}}</div>
           <div class="detalle">{{item.detalle}}</div>
+          <div class="usuario">
+            <ion-icon class="icono" name="person-circle"></ion-icon>
+            <ion-label class="nombre">{{item.nombreUsuario ? item.nombreUsuario : 'Sin nombre de usuario'}}</ion-label>
+          </div>
+          <div class="fecha">{{item.fecha}}</div>
         </div>
         <div class="derecha">
           <div class="cantidad" [class.egreso]="item.cantidad < 0">{{item.cantidad}}</div>

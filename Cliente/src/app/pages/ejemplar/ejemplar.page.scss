@@ -1,4 +1,7 @@
-.item {
+ion-item {
+    margin-bottom: 7px;
+}
+.contenido-item {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -6,17 +9,39 @@
     .nombre-material {
         font-size: 1.25em;
     }
+    .usuario {
+        display: flex;
+        align-items: center;
+        font-size: 0.9em;
+        color: var(--ion-color-step-750);
+
+        .icono {
+            margin-right: 5px;
+        }
+    }
     .detalle {
         font-size: 1em;
+        color: var(--ion-color-step-850);
+    }
+    .detalle::before {
+        content: "`";
+    }
+    .detalle::after {
+        content: "´";
     }
     .fecha {
         font-size: 0.85em;
     }
     .cantidad {
         font-size: 1.5em;
+        font-weight: bold;
         color: var(--ion-color-success);
     }
     .cantidad.egreso {
         color: var(--ion-color-danger);
     }
+}
+
+.izquierda > *:not(:last-child) {
+    margin-bottom: 3px;
 }

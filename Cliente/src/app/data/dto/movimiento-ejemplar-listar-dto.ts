@@ -4,4 +4,5 @@ export interface IMovimientoEjemplarListarDto {
     detalle?: string;
     fecha?: Date;
     nombreMaterial: string;
+    nombreUsuario: string;
 }
