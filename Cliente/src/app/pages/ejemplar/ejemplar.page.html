@@ -21,13 +21,13 @@
   <ion-list *ngIf="!Cargando">
     <ion-item *ngFor="let item of Lista" (click)="click(item)" button>
       <div class="item">
-        <div class="principal">
-          <div class="nombre-material">{{item.nombreMaterial}}</div>
-          <div class="cantidad">{{item.cantidad}}</div>
+        <div class="izquierda">
+          <div class="nombre-material">{{item.nombreMaterial ? item.nombreMaterial : 'Sin material'}}</div>
           <div class="fecha">{{item.fecha}}</div>
-        </div>
-        <div class="extra">
           <div class="detalle">{{item.detalle}}</div>
+        </div>
+        <div class="derecha">
+          <div class="cantidad" [class.egreso]="item.cantidad < 0">{{item.cantidad}}</div>
         </div>
       </div>
     </ion-item>

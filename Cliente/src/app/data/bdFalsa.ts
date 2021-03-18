@@ -58,6 +58,20 @@ export const BD: BDFalsa = {
             idUsuario: 0,
             cantidad: 10,
             detalle: "Inicial"
+        },
+        {
+            id: 4,
+            idMaterial: 4,
+            idUsuario: 0,
+            cantidad: 3,
+            detalle: "agregado para sacar"
+        },
+        {
+            id: 5,
+            idMaterial: 4,
+            idUsuario: 0,
+            cantidad: -3,
+            detalle: "sacado"
         }
     ]
 }

@@ -1,6 +1,7 @@
 export interface IMovimientoEjemplarListarDto {
     id: number;
     cantidad: number;
-    fecha?: Date;
     detalle?: string;
+    fecha?: Date;
+    nombreMaterial: string;
 }

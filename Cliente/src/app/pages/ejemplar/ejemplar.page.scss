@@ -1,0 +1,22 @@
+.item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .nombre-material {
+        font-size: 1.25em;
+    }
+    .detalle {
+        font-size: 1em;
+    }
+    .fecha {
+        font-size: 0.85em;
+    }
+    .cantidad {
+        font-size: 1.5em;
+        color: var(--ion-color-success);
+    }
+    .cantidad.egreso {
+        color: var(--ion-color-danger);
+    }
+}

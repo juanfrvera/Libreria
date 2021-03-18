@@ -5,4 +5,6 @@ export interface IMovimientoEjemplarDto {
     cantidad: number;
     fecha?: Date;
     detalle?: string;
+    // TODO: sacarle el opcional, está así por la in-memory-web-api
+    nombreMaterial?: string;
 }

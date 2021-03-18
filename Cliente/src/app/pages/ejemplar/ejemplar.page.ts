@@ -54,7 +54,8 @@ export class EjemplarPage implements OnInit {
         id: resultado.id,
         cantidad: resultado.cantidad,
         fecha: resultado.fecha,
-        detalle: resultado.detalle
+        detalle: resultado.detalle,
+        nombreMaterial: resultado.nombreMaterial
       };
 
       this.lista.push(elementoLiviano);
